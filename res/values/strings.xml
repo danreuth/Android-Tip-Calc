@@ -15,4 +15,27 @@
 	
 	<string name="change_tip_text_view">Tip</string>
 	
+	<string name="intro_text_view">Introduction</string>
+	
+	<string name="intro_friendly_text_view">Friendly</string>
+	<string name="intro_specials_text_view">Specials</string>
+	<string name="intro_opinion_text_view">Opinion</string>
+	
+	<string name="available_text_view">Availability</string>
+	<string name="available_bad_radiobutton">Bad</string>
+	<string name="available_ok_radiobutton">Ok</string>
+	<string name="available_good_radiobutton">Good</string>
+	
+	<string name="time_waiting_text_view">Time Waiting for Service</string>
+	<string name="start_chronometer_button">Start</string>
+	<string name="pause_chronometer_button">Pause</string>
+	<string name="reset_chronometer_button">Reset</string>
+	
+	<string-array name="problem_solving">
+	    <item>Problem Solving</item>
+	    <item>Bad</item>
+	    <item>Ok</item>
+	    <item>Good</item>
+	</string-array>
+	
 </resources>
