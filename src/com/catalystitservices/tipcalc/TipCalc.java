@@ -95,7 +95,7 @@ public class TipCalc extends Activity {
 	    specialsCheckBox = (CheckBox) findViewById(R.id.specialsCheckBox); 
 	    opinionCheckBox = (CheckBox) findViewById(R.id.opinionCheckBox);
 	    
-	    setUpIntroCheckBoxes();
+	  //  setUpIntroCheckBoxes();
 	    
 	    availableBadRadio = (RadioButton) findViewById(R.id.availableBadRadio);
 	    availableOKRadio = (RadioButton) findViewById(R.id.availableOkRadio);
@@ -103,18 +103,18 @@ public class TipCalc extends Activity {
 	    
 	    availableRadioGroup = (RadioGroup) findViewById(R.id.availableRadioGroup);
 	    
-	    addChangeListenerToRadios();
+	 //   addChangeListenerToRadios();
 	    
 	    problemsSpinner = (Spinner) findViewById(R.id.problemsSpinner);
 	    problemsSpinner.setPrompt("Problem Solving");
 
-	    addItemSelectedListenerToSpinner();
+	  //  addItemSelectedListenerToSpinner();
 	    
 	    startChronometerButton = (Button) findViewById(R.id.startChronometerButton);
 	    pauseChronometerButton = (Button) findViewById(R.id.pauseChronometerButton);
 	    resetChronometerButton = (Button) findViewById(R.id.resetChronometerButton);
 	   
-	    setButtonOnClickListeners();
+	  //  setButtonOnClickListeners();
 	    
 	    timeWaitingChronometer = (Chronometer) findViewById(R.id.timeWaitingChronometer);
 	    timeWaitingTextView = (TextView) findViewById(R.id.timeWaitingTextView);
