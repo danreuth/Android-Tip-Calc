@@ -8,9 +8,11 @@ import android.view.Menu;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Chronometer;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.Spinner;
@@ -95,18 +97,18 @@ public class TipCalc extends Activity {
 	    specialsCheckBox = (CheckBox) findViewById(R.id.specialsCheckBox); 
 	    opinionCheckBox = (CheckBox) findViewById(R.id.opinionCheckBox);
 	    
-	  //  setUpIntroCheckBoxes();
+	    setUpIntroCheckBoxes();
 	    
 	    availableBadRadio = (RadioButton) findViewById(R.id.availableBadRadio);
-	    availableOKRadio = (RadioButton) findViewById(R.id.availableOkRadio);
+	    availableOKRadio = (RadioButton) findViewById(R.id.availableOKRadio);
 	    availableGoodRadio = (RadioButton) findViewById(R.id.availableGoodRadio);
 	    
 	    availableRadioGroup = (RadioGroup) findViewById(R.id.availableRadioGroup);
 	    
-	 //   addChangeListenerToRadios();
+	    addChangeListenerToRadios();
 	    
-	    problemsSpinner = (Spinner) findViewById(R.id.problemsSpinner);
-	    problemsSpinner.setPrompt("Problem Solving");
+	  //  problemsSpinner = (Spinner) findViewById(R.id.problemsSpinner);
+	 //   problemsSpinner.setPrompt("Problem Solving");
 
 	  //  addItemSelectedListenerToSpinner();
 	    
@@ -235,7 +237,76 @@ public class TipCalc extends Activity {
 		 
 	 };
 		
+	 private void setUpIntroCheckBoxes(){
+ 
+		 friendlyCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener(){
+
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				Debug.out("In friendly on check changed");
+				checklistValues[0] = (friendlyCheckBox.isChecked())?4:0;
+				setTipFromWaitressChecklist();
+				updateTipAndFinalBill();
+				
+			} 
+			 
+		 });
 		 
+		 specialsCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener(){
+
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView,
+						boolean isChecked) {
+					Debug.out("In specials on check changed");
+					checklistValues[1] = (specialsCheckBox.isChecked())?1:0;
+					setTipFromWaitressChecklist();
+					updateTipAndFinalBill();
+					
+				} 
+				 
+			 });
+		 
+		 opinionCheckBox.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener(){
+
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView,
+						boolean isChecked) {
+					Debug.out("In opinion on check changed");
+					checklistValues[2] = (opinionCheckBox.isChecked())?2:0;
+					setTipFromWaitressChecklist();
+					updateTipAndFinalBill();
+					
+				} 
+				 
+			 });
+		 
+	 }
+	 
+	 private void addChangeListenerToRadios() {
+		 Debug.out("In add listener to radios" );
+		 availableRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				checklistValues[3] = (availableBadRadio.isChecked())?-1:0;
+				checklistValues[4] = (availableOKRadio.isChecked())?2:0;
+				checklistValues[5] = (availableGoodRadio.isChecked())?4:0;
+				
+				setTipFromWaitressChecklist();
+				updateTipAndFinalBill();
+			}
+			 
+		 });
+	 }
+	 private void setTipFromWaitressChecklist() {
+		 int checklistTotal = 0;
+		 for(int item : checklistValues){
+			 checklistTotal += item;
+		 }
+		 tipAmountET.setText(String.format("%.02f", checklistTotal * .01));
+		 
+	 }
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
