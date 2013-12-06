@@ -144,11 +144,16 @@ public class TipCalc extends Activity {
 				int count) {
 			try {
 				tipAmount= Double.parseDouble(s.toString());
+				if(tipAmount > 1) {
+					tipAmount = 1.0;
+					tipAmountET.setText("1.0");
+				}
 			}
 			
 			catch(Exception e) {
 				Debug.out("In catch tip");
-				tipAmount = .15;
+				tipAmount = 0.0;
+				
 			}
 			
 			updateTipAndFinalBill();
@@ -192,7 +197,6 @@ public class TipCalc extends Activity {
 		
 	private void updateTipAndFinalBill() {
 		
-		double tipAmount = Double.parseDouble(tipAmountET.getText().toString());
 		double finalBill = billBeforeTip + (billBeforeTip * tipAmount);
 		finalBillET.setText(String.format("%.02f", finalBill));
 	}
